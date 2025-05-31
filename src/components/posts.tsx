@@ -31,16 +31,22 @@ const PostList = () => {
             ),
     })
 
-    if (isPending) return <h2>Loading...</h2>
+    if (isPending) {
+    return (
+        <div className="flex items-center justify-center h-screen">
+            <h2 className="text-2xl text-center">Loading...</h2>
+        </div>
+    );
+    }
 
     if (error) return 'An error has occurred: ' + error.message
 
     return(
         <>
-        <div className="posts-container">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             {data.map((posts: Posts)=>(
-                <div className="post-card" key={posts.id}>
-                    <h3>{posts.title}</h3>
+                <div className="text-center border-1 p-4" key={posts.id}>
+                    <h3 className="text-xl font-bold pb-4">{posts.title}</h3>
                     <p>{posts.body}</p>
                 </div>
     
